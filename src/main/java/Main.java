@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 import unifiwrapper.entities.Client;
 import unifiwrapper.entities.Device;
-import unifiwrapper.unifi.UnifiAPI;
+import unifiwrapper.http.UnifiAPI;
 
 public class Main {
 
