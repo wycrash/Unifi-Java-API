@@ -1,4 +1,5 @@
 # Unifi Java API
+
 Java API for communication with Ubiquiti UniFi devices.
 
 ##Simple example:
