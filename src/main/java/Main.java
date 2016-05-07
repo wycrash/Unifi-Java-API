@@ -11,24 +11,29 @@ public class Main {
 	}
 
 	public static void list() {
-		UnifiAPI unifi = new UnifiAPI("10.40.0.3", 8443, "admin", "");
-		try {
-			unifi.connect();
-			ArrayList<Client> listClients = unifi.getAllClients();
+      // Creating a connection with the UNIFI controller
+        UnifiAPI unifi = new UnifiAPI("10.40.0.3", 8443, "admin", "");
+        try {
+            unifi.connect();
 
-			for (Client client : listClients) {
-				System.out.println(client.getMac());
-			}
+            // printing all client hostnames connected in the last hour
+            ArrayList<Client> listClients = unifi.getClients().getAllClientsNh(1);
 
-			ArrayList<Device> listDevices = unifi.getAllDevices();
-			for (Device device : listDevices) {
-				System.out.println(device.getNetworkConfiguration().getIp());
-			}
+            int i = 0;
+            for (Client client : listClients) {
+                System.out.println((i++) + " " + client.getHostname());
+            }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+                // printing all devices IP
+            ArrayList<Device> listDevices = unifi.getDevices().getAllDevices();
+            for (Device device : listDevices) {
+                System.out.println(device.getNetworkConfiguration().getIp());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
