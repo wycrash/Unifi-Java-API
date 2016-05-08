@@ -114,5 +114,10 @@ public class Client {
 	public String getStatUser() {
 		return o.getJSONObject("stat").getString("user");
 	}
-
+	public String getBssId() {
+		return o.getString("bssid");
+	}
+	public String getEssId() {
+		return o.getString("essid");
+	}
 }
